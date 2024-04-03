@@ -9,6 +9,7 @@ import (
 	"github.com/gin-contrib/sessions/memstore"
 	"github.com/gin-gonic/gin"
 	"github.com/logto-io/go/client"
+	"github.com/logto-io/go/core"
 )
 
 var (
@@ -22,6 +23,7 @@ func main() {
 		AppId:     os.Getenv("APP_ID"),
 		AppSecret: os.Getenv("APP_SECRET"),
 		Resources: []string{},
+		Scopes:    []string{core.UserScopeEmail, core.UserScopeOrganizations},
 	}
 	resources, present := os.LookupEnv("RESOURCES")
 	if present {
